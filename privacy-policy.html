@@ -8,28 +8,35 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #ff6b35;
+            --primary-gradient: linear-gradient(135deg, #ff6b35 0%, #ff8e57 100%);
             --primary-light: rgba(255, 107, 53, 0.1);
             --primary-dark: #e85a24;
             --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --text-light: #6c757d;
+            --accent-color: #3a86ff;
+            --text-color: #2d3748;
+            --text-light: #718096;
             --bg-light: #ffffff;
-            --bg-dark: #212529;
-            --transition: all 0.3s ease;
+            --bg-dark: #1a202c;
+            --bg-gradient: linear-gradient(135deg, #f9fafb 0%, #f1f5f9 100%);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --border-radius: 16px;
+            --border-radius-sm: 8px;
             --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 20px rgba(255, 107, 53, 0.15);
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-color);
-            background-color: #f9fafb;
+            background: var(--bg-gradient);
             line-height: 1.7;
             padding-top: 76px;
         }
@@ -38,24 +45,45 @@
             background-color: var(--bg-light);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
-            padding: 3rem;
+            padding: 3.5rem;
             margin-bottom: 3rem;
             border: none;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .policy-section:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
         }
 
         .navbar {
-            background-color: var(--bg-light);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
             padding: 1rem 0;
-            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-md);
         }
 
         .navbar-brand {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-color) !important;
             font-size: 1.6rem;
             letter-spacing: -0.5px;
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+            text-shadow: var(--shadow-glow);
         }
 
         .nav-link {
@@ -74,26 +102,41 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
             transition: var(--transition);
+            opacity: 0;
         }
 
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 100%;
+            opacity: 1;
         }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--primary-color) !important;
+            transform: translateY(-2px);
         }
 
         .footer {
             background-color: var(--bg-dark);
             color: white;
-            padding: 5rem 0 2rem;
-            margin-top: 6rem;
-            border-radius: 30px 30px 0 0;
+            padding: 6rem 0 2rem;
+            margin-top: 8rem;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
         }
 
         .footer h4 {
@@ -111,7 +154,7 @@
             bottom: -10px;
             width: 30px;
             height: 2px;
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
         }
 
         .footer a {
@@ -131,7 +174,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--primary-color);
             margin-bottom: 2rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
 
@@ -159,7 +202,7 @@
             margin: 0 auto;
             width: 50px;
             height: 3px;
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
             border-radius: 50px;
         }
 
@@ -179,7 +222,7 @@
         }
 
         .policy-section p, .policy-section li {
-            color: #4a5568;
+            color: var(--text-light);
         }
 
         a {
@@ -233,18 +276,98 @@
 
         .progress-bar {
             height: 4px;
-            background: var(--primary-color);
+            background: var(--primary-gradient);
             width: 0%;
         }
 
         /* Footer improvements */
         .footer .list-unstyled li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
 
         .copyright {
             opacity: 0.7;
             font-size: 0.9rem;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-dark));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer {
+                border-radius: 30px 30px 0 0;
+            }
+            
+            .policy-section {
+                padding: 2.5rem;
+            }
+        }
+
+        /* Background pattern */
+        .pattern-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        /* Content container */
+        .content-container {
+            position: relative;
+        }
+
+        /* Page header with gradient */
+        .page-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .page-header::before,
+        .page-header::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .page-header::before {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            right: -50px;
+        }
+
+        .page-header::after {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            left: -50px;
         }
     </style>
 </head>
@@ -256,7 +379,7 @@
     </div>
 
     <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="index.html">COOKER</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -278,12 +401,20 @@
         </div>
     </nav>
 
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1>Политика конфиденциальности</h1>
+            <p class="lead mb-0">Ваши данные под надежной защитой</p>
+        </div>
+    </header>
+
     <!-- Основное содержимое -->
-    <div class="container py-5">
+    <div class="container py-5 content-container">
+        <div class="pattern-bg"></div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="policy-header text-center">
-                    <h1>Политика конфиденциальности</h1>
+                <div class="text-center mb-5">
                     <p class="policy-date">Последнее обновление: 20 апреля 2025 г.</p>
                 </div>
 
@@ -368,15 +499,15 @@
                 <div class="col-lg-3">
                     <h4>Полезные ссылки</h4>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
-                        <li><a href="terms-of-service.html">Условия использования</a></li>
+                        <li><a href="index.html"><i class="fas fa-home me-2"></i>Главная</a></li>
+                        <li><a href="privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Политика конфиденциальности</a></li>
+                        <li><a href="terms-of-service.html"><i class="fas fa-file-contract me-2"></i>Условия использования</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>Контакты</h4>
                     <ul class="list-unstyled">
-                        <li><a href="mailto:dir@belloff.ru">dir@belloff.ru</a></li>
+                        <li><a href="mailto:dir@belloff.ru"><i class="fas fa-envelope me-2"></i>dir@belloff.ru</a></li>
                     </ul>
                 </div>
             </div>
@@ -390,10 +521,13 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Progress bar script -->
+    <!-- Custom Scripts -->
     <script>
         // When the user scrolls the page, execute progressBar function
-        window.onscroll = function() {progressBar()};
+        window.onscroll = function() {
+            progressBar();
+            navbarScroll();
+        };
 
         function progressBar() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -401,6 +535,34 @@
             var scrolled = (winScroll / height) * 100;
             document.getElementById("myBar").style.width = scrolled + "%";
         }
+        
+        function navbarScroll() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("mainNav").classList.add("scrolled");
+            } else {
+                document.getElementById("mainNav").classList.remove("scrolled");
+            }
+        }
+
+        // Initialize animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.policy-section').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 
