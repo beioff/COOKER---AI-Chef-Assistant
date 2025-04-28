@@ -6,53 +6,148 @@
     <title>Условия использования - COOKER</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --bg-light: #ffffff;
+            --bg-dark: #212529;
+            --transition: all 0.3s ease;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 60px;
-            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+            padding-top: 70px;
         }
+        
         .policy-section {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
+        
         .navbar {
-            background-color: #ff6b35;
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 0;
         }
+        
         .navbar-brand {
-            font-weight: bold;
-            color: white !important;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
         }
+        
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
         .footer {
-            background-color: #343a40;
+            background-color: var(--bg-dark);
             color: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+            border-radius: 20px 20px 0 0;
         }
+        
+        .footer h4 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
         .footer a {
-            color: #adb5bd;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            transition: var(--transition);
         }
+        
         .footer a:hover {
             color: white;
         }
+        
         h1 {
-            color: #ff6b35;
+            color: var(--primary-color);
             margin-bottom: 2rem;
+            font-weight: 700;
         }
+        
         h3 {
-            color: #ff6b35;
+            color: var(--primary-color);
             margin-top: 2rem;
             margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .policy-header {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .policy-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0 auto;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .policy-date {
+            color: #6c757d;
+            font-size: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .policy-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: #e85a24;
         }
     </style>
 </head>
 <body>
     <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">COOKER</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -78,8 +173,10 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <h1 class="text-center">Условия использования</h1>
-                <p class="text-center text-muted mb-5">Последнее обновление: 25 мая 2024 г.</p>
+                <div class="policy-header text-center">
+                    <h1>Условия использования</h1>
+                    <p class="policy-date">Последнее обновление: 25 мая 2024 г.</p>
+                </div>
                 
                 <div class="policy-section">
                     <p>Пожалуйста, внимательно ознакомьтесь с настоящими Условиями использования ("Условия") перед использованием мобильного приложения COOKER ("Приложение") и связанных с ним услуг.</p>
@@ -190,7 +287,7 @@
                     </ul>
                 </div>
             </div>
-            <hr>
+            <hr class="mt-4 mb-4" style="opacity: 0.1;">
             <div class="text-center">
                 <p>&copy; 2025 COOKER. Все права защищены.</p>
             </div>
